@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Hire</title>
+    <style>
+.product-cards {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.product-card {
+  width: 33.33%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.product-card h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.product-card p {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.product-card a {
+  display: block;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+}
+
+    </style>
+</head>
+<body>
+    {% for cars in hire %}
+        <div class="product-card">
+            <img src=" {{ cars.image.url }}" alt="{{ cars.make }} {{ cars.model }}">
+        <div class="product-info">
+            <h2>{{ cars.make }} {{ cars.model }}</h2>
+            <p>{{ cars.description}}</p>
+            <p class="price">Price: {{ cars.price }}</p>
+            <a href="#">Check out now</a>
+        </div>
+        </div>
+    {% endfor %}
+
+</body>
+</html>

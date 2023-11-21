@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Destinations</title>
+</head>
+<body>
+<h1>Add a New Destination</h1>
+
+<form method="post">
+        {% csrf_token %}
+        {{ destination }}
+        <input type="Submit" value="SUBMIT">
+    </form>
+</body>
+</html>

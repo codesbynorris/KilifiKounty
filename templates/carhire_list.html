@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table id="cars">
+    <thead>
+        <tr>
+            <th>Car Make</th>
+            <th>Model</th>
+            <th>No. of Seaters</th>
+            <th>Price</th>
+            <th>Image</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for cars in hire %}
+    <tr>
+        <td> {{cars.make}} </td>
+        <td>{{ cars.model }}</td>
+        <td>{{ cars.seater }}</td>
+        <td>{{ cars.price }}</td>
+        <td>
+            {% if cars.image %}
+                <img src="{{ cars.image.url }}" alt="Car Image" style="max-width: 100px; max-height: 100px;">
+            {% else %}
+                No Image Available
+            {% endif %}
+        </td>
+    </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>
