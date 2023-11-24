@@ -1,0 +1,37 @@
+{% extends 'Websites/index.html' %}
+
+{% block title %}
+    <title>Car Hire</title>
+{% endblock %}
+
+{% block content %}
+    <table id="cars">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Fee</th>
+            <th>Image</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for attractions in attract %}
+    <tr>
+        <td> {{attractions.name}} </td>
+        <td>{{ attractions.location }}</td>
+        <td>{{ attractions.fee }}</td>
+        <td>
+            {% if attractions.image %}
+                <img src="{{ attractions.image.url }}" alt="Hotel" style="max-width: 100px; max-height: 100px;">
+            {% else %}
+                No Image Available
+            {% endif %}
+        </td>
+    </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+</body>
+</html>

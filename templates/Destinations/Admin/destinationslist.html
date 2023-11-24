@@ -1,0 +1,34 @@
+{% extends 'Websites/index.html' %}
+
+{% block title %}
+    <title>Destinations</title>
+{% endblock %}
+
+{% block content %}
+    <table id="cars">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Maps Link</th>
+            <th>Image</th>
+
+        </tr>
+    </thead>
+    <tbody>
+    {% for destinations in destine %}
+    <tr>
+        <td> {{destinations.name}} </td>
+        <td>{{ destinations.link }}</td>
+        <td>
+            {% if destinations.image %}
+                <img src="{{ destinations.image.url }}" alt="{{ destinations.name }}" style="max-width: 100px; max-height: 100px;">
+            {% else %}
+                No Image Available
+            {% endif %}
+        </td>
+    </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+

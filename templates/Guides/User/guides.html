@@ -1,0 +1,25 @@
+{% extends 'Websites/index.html' %}
+
+{% block title %}
+    <title>Guides</title>
+{% endblock %}
+
+{% block content %}
+<h2>Tour Guides</h2>
+
+    {% for guides in guideme %}
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <h2>{{ guides.firstname}} {{ guides.middle_name }}</h2>
+      <p>{{ guides.age }}<br>
+         {{ guides.description }}</p>
+    </div>
+    <div class="flip-card-back">
+       <img src="{{ guides.image.url }}" alt="{{ guides.surname }}">
+    </div>
+  </div>
+</div>
+    {% endfor %}
+
+{% endblock %}

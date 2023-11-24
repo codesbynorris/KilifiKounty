@@ -1,0 +1,313 @@
+/*index css*/
+*{
+      margin:0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
+
+header{
+      z-index: 999;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 200px;
+      transition: 0.5s ease;
+    }
+
+header .brand{
+      color: black;
+      font-size: 1.5em;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+header .navigation .navigation-items a{
+      position: relative;
+      color: black;
+      font-size: 1em;
+      font-weight: 500;
+      text-decoration: none;
+      margin-left: 30px;
+      transition: 0.3s ease;
+    }
+
+header .navigation .navigation-items a:before {
+      content: '';
+      position: absolute;
+      background: black;
+      width: 0;
+      height: 3px;
+      bottom: 0;
+      left: 0;
+      transition: 0.3s ease;
+    }
+
+header .navigation .navigation-items a:hover:before {
+      width: 100%;
+    }
+
+.extend{
+    margin-top: 70px;
+    margin-left: 10px;
+}
+
+/*Footer CSS*/
+.footer {
+      background-color: #f5f5f5;
+      padding: 20px;
+    }
+
+.footer-container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+.footer-section {
+      margin-bottom: 20px;
+  /*margin-right: auto;*/
+ /* width: auto;*/
+    }
+
+#s1{
+        width: 20%;
+    }
+
+#s2{
+        width: 10%;
+    }
+#s3{
+        width: 45%;
+    }
+#s4{
+        width: 10%;
+    }
+#s5{
+        width: 15%;
+    }
+
+.footer-section h3 {
+  margin-bottom: 10px;
+  font-weight: bold;
+    }
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+    }
+
+.footer-section ul li {
+  margin-bottom: 5px;
+    }
+
+.footer-section ul li a {
+  color: #333;
+  text-decoration: none;
+    }
+
+.footer-section ul li a:hover {
+  color: #000;
+    }
+
+.footer-copyright {
+  text-align: center;
+  margin-top: 20px;
+    }
+
+.footer-copyright p {
+  margin-bottom: 0;
+    }
+
+/*car hire css*/
+
+/* Style for the container of product cards */
+.product-cards {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between; /* Adjust as needed */
+  gap: 20px; /* Adjust spacing between cards */
+  padding: 20px; /* Adjust padding around the container */
+  box-sizing: border-box;
+}
+
+/* Style for individual product cards */
+.product-card {
+  flex: 0 0 auto; /* Adjust card flex properties */
+  width: 33.33%; /* Adjust card width and spacing */
+  max-width: calc(33.33% - 20px); /* Adjust max-width for responsiveness */
+  background-color: #ffffff;
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+
+}
+
+.product-card h2 {
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 8px;
+  text-align: center;
+
+}
+
+.product-card p {
+  font-size: 14px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.product-card .price {
+  font-weight: bold;
+  color: #333333;
+}
+
+.product-card a {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.product-card a:hover {
+  background-color: #0056b3;
+}
+
+/*CaarHire List CSS*/
+#cars {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#cars td, #cars th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#cars tr:nth-child(even){background-color: #f2f2f2;}
+
+#cars tr:hover {background-color: #ddd;}
+
+#cars th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #5897fb;
+  color: white;
+}
+
+/*new car for hire css*/
+.wrapper{
+  width: 500px;
+  padding: 2rem 0 1rem 0;
+  margin: 50px auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+form input{
+  width: 80%;
+  outline: none;
+  border: none;
+  background: pink;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+    margin-right: 500px;
+    margin-left: 50px;
+  border-radius: 10px;
+}
+
+label{
+   margin: 20px;
+}
+
+input[type="submit"] {
+  /* Style the button's appearance */
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+  border-radius: 0.5rem;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  cursor: pointer;
+  width: 50%;
+}
+/*Guides CSS*/
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 300px;
+  perspective: 1000px;
+  margin-bottom: 20px;
+
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: #2980b9;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.flip-card-back img{
+    width: 300px;
+    height: 300px;
+}
+
+.flip-card-front h2{
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.flip-card-front p{
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+

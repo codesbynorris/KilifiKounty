@@ -1,0 +1,21 @@
+{% extends 'Websites/index.html' %}
+
+{% block title %}
+    <title>Destinations</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="product-cards">
+    {% for destinations in destinationme %}
+        <div class="product-card">
+            <img src=" {{ destinations.image.url }}" alt="{{ destinations.name }}">
+            <div class="product-info">
+                <h2>{{ destinations.name }}</h2>
+                <p>{{ destinations.description}}</p>
+                <a href="{{ destinations.link }}">Check out now</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'Websites/index.html' %}
+
+{% block title %}
+    <title>Destination</title>
+{% endblock %}
+
+{% block content %}
+    <h1>New Destination</h1>
+    <div class="wrapper">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ destination.as_p }}
+        <input type="Submit" value="SUBMIT">
+    </form>
+        </div>
+{% endblock %}

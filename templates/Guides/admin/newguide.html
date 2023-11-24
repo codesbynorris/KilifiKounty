@@ -1,0 +1,16 @@
+{% extends 'Websites/index.html' %}
+
+{% block title %}
+    <title>Tour Guide</title>
+{% endblock %}
+
+{% block content %}
+    <h1>New Tour Guide</h1>
+    <div class="wrapper">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ hireguide.as_p }}
+        <input type="Submit" value="SUBMIT">
+    </form>
+        </div>
+{% endblock %}

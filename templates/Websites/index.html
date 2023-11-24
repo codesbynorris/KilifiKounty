@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+
+    {% block title %}
+    <title>Index</title>
+    {% endblock %}
+</head>
+
+<body>
+<header>
+  <a href="#" class="brand">Karibu Kilifi</a>
+
+  <div class="menu-btn">  </div>
+
+  <div class="navigation">
+
+    <div class="navigation-items">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Explore</a>
+      <a href="#">Gallery</a>
+      <a href="#">Contact Us</a>
+    </div>
+  </div>
+</header>
+
+<div class="extend">
+    {% block content %}
+    {% endblock %}
+</div>
+
+
+
+</body>
+</html>

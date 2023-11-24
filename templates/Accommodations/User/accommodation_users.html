@@ -1,0 +1,26 @@
+{% extends 'Websites/index.html' %}
+
+{% block title %}
+    <title>Accommodation</title>
+{% endblock %}
+
+{% block content %}
+<div class="product-cards">
+     {% for accommodations in accommodateme %}
+        <div class="product-card">
+            <img src=" {{ accommodations.image.url }}" alt="{{ accommodations.name }} a {{ accommodations.type }} in {{ accommodations.location }}">
+            <div class="product-info">
+                <h2>{{ accommodations.name }}</h2>
+                <p>{{ accommodations.description}}</p>
+                <p class="price">
+                Location: {{ accommodations.location }}<br>
+                Type: {{ accommodations.type }}<br>
+                No. of Rooms: {{ accommodations.rooms }}<br>
+                Price: {{ cars.price }} <br>
+                <a href="#">Check out now</a>
+            </div>
+        </div>
+    {% endfor %}
+
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'Websites/index.html' %}
+
+{% block title %}
+    <title>Car Hire</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="product-cards">
+    {% for cars in hire %}
+        <div class="product-card">
+            <img src=" {{ cars.image.url }}" alt="{{ cars.make }} {{ cars.model }}">
+            <div class="product-info">
+                <h2>{{ cars.make }} {{ cars.model }}</h2>
+                <p>{{ cars.description}}</p>
+                <p class="price">Price: {{ cars.price }} <br>
+                    Seaters: {{ cars.seater }}</p>
+                <a href="#">Check out now</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

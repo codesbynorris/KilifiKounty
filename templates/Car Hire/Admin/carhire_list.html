@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'Websites/index.html' %}
+
+{% block title %}
+    <title>Car Hire</title>
+{% endblock %}
+
+{% block content %}
 <table id="cars">
     <thead>
         <tr>
@@ -33,5 +33,4 @@
         {% endfor %}
     </tbody>
 </table>
-</body>
-</html>
+{% endblock %}
