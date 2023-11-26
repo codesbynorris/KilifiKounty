@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Rental Form</h1>
+
+    <form action="templates/Car Hire/User/car_hire.html">
+        <label for="day">Day:</label>
+        <input type="number" id="day" name="day" min="1" max="31" required>
+
+        <label for="pick_up_date">Pick Up Date:</label>
+        <input type="date" id="pick_up_date" name="pick_up_date" onchange="calculateReturnDate()">
+
+        <label for="return_date">Return Date:</label>
+        <input type="date" id="return_date" name="return_date" disabled>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        function calculateReturnDate() {
+  // Get the pick up date and time
+  const pickUpDateTime = new Date(document.getElementById('pick_up_date').value);
+
+  // Get the selected day
+  const selectedDay = parseInt(document.getElementById('day').value);
+
+  // Set the pick up date to the selected day
+  pickUpDateTime.setDate(selectedDay);
+
+  // Add the selected number of days to the pick up date to get the return date
+  const returnDate = new Date(pickUpDateTime.getTime() + 86400000 * parseInt(document.getElementById('day').value));
+
+  // Set the return date in the input field
+  document.getElementById('return_date').value = returnDate.toISOString().slice(0, 10);
+}
+
+    </script>
+</body>
+</html>

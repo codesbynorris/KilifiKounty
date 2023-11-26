@@ -229,8 +229,8 @@ form input{
   background: pink;
   padding: 12px 14px;
   margin-bottom: 10px;
-    margin-right: 500px;
-    margin-left: 50px;
+  margin-right: 500px;
+  margin-left: 50px;
   border-radius: 10px;
 }
 
@@ -311,3 +311,7 @@ input[type="submit"] {
     text-align: center;
 }
 
+/*Success Page*/
+ .success{
+        font-size: x-small;
+    }

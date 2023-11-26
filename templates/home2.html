@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+
+}
+body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+header{
+      z-index: 999;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 200px;
+      transition: 0.5s ease;
+    background-color: #fff;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+header .brand{
+      color: #007bff;
+      font-size: 1.8em;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-decoration: none;
+      margin-left: 20px;
+    }
+
+header .navigation .navigation-items a{
+      position: relative;
+      color: #333;
+      font-size: 1.1em;
+      font-weight: 500;
+      text-decoration: none;
+      margin-left: 30px;
+      transition: 0.3s ease;
+    }
+
+header .navigation .navigation-items a:before {
+      content: '';
+      position: absolute;
+      background: black;
+      width: 0;
+      height: 3px;
+      bottom: 0;
+      left: 0;
+      transition: 0.3s ease;
+    }
+
+header .navigation .navigation-items a:hover:before {
+      width: 100%;
+    }
+header .navigation .navigation-items a:hover {
+       color: #007bff;
+       }
+
+.section-2 {
+    padding: 40px;
+    background-color: #fff;
+            text-align: center;
+}
+
+.section-2 h2 {
+color: #007bff;
+            font-size: 2em;
+            margin-bottom: 20px;}
+
+.product-cards {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between; /* Adjust as needed */
+  gap: 20px; /* Adjust spacing between cards */
+  padding: 20px; /* Adjust padding around the container */
+  box-sizing: border-box;
+}
+
+/* Style for individual product cards */
+.product-card {
+  flex: 0 0 auto; /* Adjust card flex properties */
+  width: 33.33%; /* Adjust card width and spacing */
+  max-width: calc(33.33% - 20px); /* Adjust max-width for responsiveness */
+  background-color: #ffffff;
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+
+}
+
+.product-card h2 {
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 8px;
+  text-align: center;
+
+}
+
+.product-card p {
+  font-size: 14px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.product-card .price {
+  font-weight: bold;
+  color: #333333;
+}
+
+.product-card a {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.product-card a:hover {
+  background-color: #0056b3;
+}
+.about_text{
+
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 20px;
+}
+.text1{
+
+    font-size: 1.2em;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #007bff;
+    margin-top: 30px;
+}
+.text2{
+    font-style: italic;
+    font-size: 1.1em;
+    font-style: italic;
+    color: #777;
+    margin-bottom: 30px;
+}
+.Categories{
+    padding-top: 20px;
+    text-align: center;
+}
+.category-images img{
+            width: 350px;
+            height: 500px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+}
+.category-images img:hover {
+            transform: scale(1.05);
+        }
+</style>
+
+</head>
+<body>
+<header>
+  <a href="#" class="brand">Karibu Kilifi</a>
+
+  <div class="menu-btn">  </div>
+
+  <div class="navigation">
+
+    <div class="navigation-items">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Explore</a>
+      <a href="#">Gallery</a>
+      <a href="#">Contact Us</a>
+    </div>
+  </div>
+</header>
+<br><br><br>
+
+<div class="section-2">
+    <h2>About Kilifi County</h2>
+    <br>
+      <p class="about_text">Kilifi County, nestled along Kenya's picturesque coastline,
+          is a captivating region renowned for its stunning landscapes, rich cultural heritage,
+          and vibrant communities. With its expansive shoreline stretching along the Indian Ocean,
+          Kilifi boasts pristine beaches adorned with palm trees swaying gently in the ocean breeze,
+          offering visitors a serene escape and a plethora of water-based activities.
+          The county's diverse terrain includes lush forests, mangrove swamps, and the iconic Kilifi Creek,
+          providing a haven for biodiversity and wildlife. Home to the Giriama, Chonyi,
+          and other ethnic groups, Kilifi County treasures a tapestry of traditions, music, and art,
+          creating a unique mosaic of cultural experiences. The region's bustling markets, where local artisans
+          showcase their crafts, and the historical ruins like the Gede Ruins, narrate tales of ancient civilizations,
+          adding depth to Kilifi's allure. This coastal gem pulsates with warmth, inviting travelers to explore its natural
+          wonders and immerse themselves in its vibrant local life.
+      </p>
+    <p class="text1">You don't want to check places off your bucketlist - You want to be moved by the beauty and adventure</p>
+    <p class="text2">If it's your first time traveling to the Coast, you're exactly where you need to be. Browse our site for endless destination inspirations and travel-tips</p>
+    </div>
+
+<div class="product-cards">
+    {% for package in travel_packages %}
+        <div class="product-card">
+
+            <img src="{{ package.attraction.image.url }}" alt="{{ package.attraction.name }}">
+
+            <h1>{{ package.package_name }}</h1>
+            <p>{{ package.package_description }}</p>
+            <p><del>Was: Kshs.{{ package.was }}</del></p>
+            <p>Now: Kshs.{{ package.package_price }}</p>
+
+        </div>
+        {% endfor %}
+</div>
+
+<div class="Categories">
+    <div class="category-images">
+        <h2>Categories</h2>
+        <a href="{% url 'Destination' %}">
+        <img src="../static/Images/forest.jpg" alt="">
+        </a>
+        <a href="{% url 'Accommodation' %}">
+        <img src="../static/Images/atrium.jpg" alt="">
+        </a>
+        <a href="{% url 'CarHire' %}">
+        <img src="../static/Images/car%20hire.jpg" alt="">
+        </a>
+        <a href="{% url 'Attraction' %}">
+        <img src="../static/Images/destination.jpeg" alt="">
+        </a>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section" id="s1">
+        <h3>Newsletter</h3>
+        <form action="#">
+            <p>By subscribing, you agree to our Terms and Conditions</p>
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+
+      <div class="footer-section" id="s2">
+        <h3>Social Media</h3>
+        <ul class="social-media">
+          <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section" id="s3">
+        <h3>About Us</h3>
+        <p>Karibu Kilifi is your ultimate travel guide, offering information about destinations, accommodations, and activities in Kilifi County.</p>
+      </div>
+
+      <div class="footer-section" id="s4">
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="#">Destinations</a></li>
+          <li><a href="#">Activities</a></li>
+          <li><a href="#">Attractions</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section" id="s5">
+        <h3>Contact Us</h3>
+        <p>Email: info@karibukilifi.com</p>
+        <p>Phone: +123456789</p>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-copyright">
+      <p>&copy; 2023 Karibu Kilifi. All Rights Reserved.</p>
+        <a href="#">Terms of Service | Privacy Policy</a>
+    </div>
+  </footer>
+
+</body>
+</html>

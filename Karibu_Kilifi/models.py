@@ -1,4 +1,4 @@
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, User
 from django.db import models
 
 
@@ -66,3 +66,13 @@ class Guide(models.Model):
         return f"{self.middle_name} of {self.age} years old"
 
 
+class TravelPackages(models.Model):
+    attraction = models.ForeignKey(attraction, on_delete=models.CASCADE)
+    accommodation = models.ForeignKey(accommodation, on_delete=models.CASCADE)
+    package_name = models.CharField(max_length=40, verbose_name='Package Name')
+    package_description = models.TextField()
+    package_price = models.DecimalField(max_digits=8, decimal_places=2, verbose_name='Price')
+    was = models.DecimalField(max_digits=8, decimal_places=2, verbose_name='Former Price', blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.package_name} is {self.package_price}"

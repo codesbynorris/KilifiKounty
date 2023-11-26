@@ -1,0 +1,16 @@
+{% extends 'Websites/index.html' %}
+
+{% block title %}
+    <title>Login Form</title>
+{% endblock %}
+
+{% block content %}
+    <h2>Login</h2>
+     <div class="wrapper">
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="Submit" value="SUBMIT">
+    </form>
+    </div>
+{% endblock %}

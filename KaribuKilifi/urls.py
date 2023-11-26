@@ -18,39 +18,47 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
+import Karibu_Kilifi
+from Karibu_Kilifi import urls
 from Karibu_Kilifi.views import addnew, addDestination, addAccommodation, addAttraction, carHire_list, cars, \
     carCheckOut, SampleHome, accommodation_List, accommodate, attraction_List, attract, destination_List, destine, \
-    successfulapplication, hireguide, guide_List, guide
+    successfulapplication, hireguide, guide_List, guide, signup, login_view, travel_packages, homepage, CarInfo
 
 urlpatterns = [
                   path('admin/', admin.site.urls),
+
+                  # SignUp & Login
+                  # path('Karibu_Kilifi/', include(Karibu_Kilifi.urls)),
+                  path('signup/', signup, name='signup'),
+                  path('login/', login_view, name='login'),
 
                   # Car Hire admin
                   path('addnew/', addnew),
                   path('addnew/carsforhirelist/', carHire_list),
                   # Car Hire User
-                  path('carhire/', carCheckOut),
+                  path('carinfo/', CarInfo,),
+                  path('carhire/', carCheckOut, name='CarHire'),
                   # duplication path('lolo/', carHire_list),
 
                   # accommodation admin
                   path('newaccommodation/', addAccommodation),
                   path('newaccommodation/accommodationlist/', accommodation_List),
                   # accommodation users
-                  path('accommodate/', accommodate),
+                  path('accommodate/', accommodate, name='Accommodation'),
 
                   # attraction sites admin
                   path('newattraction/', addAttraction),
                   path('newattraction/attractionlist/', attraction_List),
                   # attraction users
-                  path('attraction/', attract),
+                  path('attraction/', attract, name='Attraction'),
 
                   # Destination admin
                   path('newdestination/', addDestination),
                   path('newdestination/destinationlist/', destination_List),
                   # destination users
-                  path('destination/', desticane),
+                  path('destination/', destine, name='Destination'),
 
                   # guide
                   path('hiring_guides/', hireguide),
@@ -61,8 +69,10 @@ urlpatterns = [
                   path('guides/', guide),
 
                   path('home/', SampleHome),
+                  # path('home2/', homepage, name='homepage'),
                   # Broken Links
                   path('car/<int:id>', cars),
+                  path('test/', travel_packages, name='homepage'),
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

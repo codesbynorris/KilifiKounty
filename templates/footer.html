@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'footer.css' %}">
+</head>
+<body>
+<footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section" id="s1">
+        <h3>Newsletter</h3>
+        <form action="#">
+            <p>By subscribing, you agree to our Terms and Conditions</p>
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+
+      <div class="footer-section" id="s2">
+        <h3>Social Media</h3>
+        <ul class="social-media">
+          <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section" id="s3">
+        <h3>About Us</h3>
+        <p>Karibu Kilifi is your ultimate travel guide, offering information about destinations, accommodations, and activities in Kilifi County.</p>
+      </div>
+
+      <div class="footer-section" id="s4">
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="#">Destinations</a></li>
+          <li><a href="#">Activities</a></li>
+          <li><a href="#">Attractions</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section" id="s5">
+        <h3>Contact Us</h3>
+        <p>Email: info@karibukilifi.com</p>
+        <p>Phone: +123456789</p>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-copyright">
+      <p>&copy; 2023 Karibu Kilifi. All Rights Reserved.</p>
+        <a href="#">Terms of Service | Privacy Policy</a>
+    </div>
+  </footer>
+</body>
+</html>

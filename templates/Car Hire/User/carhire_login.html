@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>King Kong Car Hire Company</title>
+    <style>
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.container {
+  width: 80%;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+h2 {
+  color: #333;
+}
+
+.intro {
+  font-size: 18px;
+  color: #666;
+}
+
+ul {
+  list-style-type: circle;
+  padding: 10px;
+}
+
+li {
+  margin-bottom: 10px;
+}
+span{
+    font-weight: bold;
+}
+.contact {
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+}
+
+a {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #fff; /* Text color */
+      background-color: #333; /* Background color */
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    /* Hover effect for the anchor element */
+    a:hover {
+      background-color: #555; /* Hover background color */
+    }
+
+    /* Adjustments for responsive design (optional) */
+    @media screen and (max-width: 768px) {
+      a {
+        display: block;
+        width: 100%;
+        margin-top: 15px;
+      }
+    }
+
+    </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to King Kong Car Hire!</h1>
+    <p class="intro">At King Kong Car Hire, we're dedicated to providing you with a seamless and enjoyable car rental experience. Whether you're traveling for business or pleasure, our diverse fleet of vehicles is meticulously maintained and equipped to meet your needs.</p>
+
+    <h2>Why Choose Us?</h2>
+    <ul>
+      <li><span>Wide Range of Vehicles:</span> From compact cars to spacious SUVs and luxury sedans, we offer a broad selection of vehicles to suit every occasion and preference.</li>
+      <li><span>Convenient Booking:</span> Our user-friendly online booking system allows you to easily reserve the vehicle of your choice in just a few clicks. You can also reach out to our friendly customer service team for assistance.</li>
+      <li><span>Transparent Pricing:</span> We believe in transparent pricing with no hidden fees. Our competitive rates and flexible rental options ensure you get the best value for your money.</li>
+      <li><span>Quality Service:</span> Your satisfaction is our priority. Our dedicated staff strives to deliver exceptional customer service at every step of your car rental journey.</li>
+      <li><span>Flexible Pickup and Drop-off:</span> We offer flexible pickup and drop-off locations, making it convenient for you to collect and return your vehicle.</li>
+      <li><span>Additional Services:</span> Enhance your experience with optional add-ons like GPS navigation systems, child seats, and more.</li>
+    </ul>
+
+    <p>Whether you need a vehicle for a short trip or an extended road adventure, trust King Kong Car Hire to provide you with reliable, comfortable, and affordable transportation solutions.</p>
+
+    <p class="contact">Contact us today to book your next car rental and embark on a memorable journey with peace of mind!</p>
+      <a href="{% url 'CarHire' %}">Rent a Car</a>
+  </div>
+
+</body>
+</html>

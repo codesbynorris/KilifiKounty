@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Travel Website Homepage</title>
+  <style>
+    /* Reset some default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+
+}
+
+/* Basic styling for the header navigation */
+
+
+
+/* Styling for the sections */
+.section-1 {
+  background-image: url('../static/Images/Background.jpg');
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.text-over-image {
+  color: white;
+}
+
+.text-over-image h1 {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+
+.text-over-image p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  text-decoration: none;
+  background-color: #FFA500;
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #FF6347;
+}
+
+
+  </style>
+</head>
+<body>
+
+
+  <main>
+    <div class="section-1">
+      <div class="text-over-image">
+        <h1>Welcome to Kilifi County</h1>
+        <p>Discover the beauty of Kilifi's coastline and cultural heritage</p>
+        <a href="{% url 'homepage' %}" class="btn">Explore Now</a>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>

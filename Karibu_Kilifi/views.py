@@ -1,9 +1,12 @@
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.core.mail import send_mail
 from django.forms import ModelForm
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse
 
-from Karibu_Kilifi.models import carHire, destination, accommodation, attraction, Guide
+from Karibu_Kilifi.models import carHire, destination, accommodation, attraction, Guide, TravelPackages
 
 
 # Create your views here.
@@ -84,7 +87,7 @@ def addAttraction(request):
 
 def cars(request, id):
     carhire_class = carHire.objects.get(pk=id)
-    return render(request, "carsforhire.html", {"chire": carhire_class})
+    return render(request, "", {"chire": carhire_class})
 
 
 def carHire_list(request):
@@ -96,9 +99,15 @@ def carCheckOut(request):
     CheckOut = carHire.objects.all()
     return render(request, 'Car Hire/User/car_hire.html', {"hire": CheckOut})
 
+def CarInfo(request):
+    return render(request, 'Car Hire/User/carhire_login.html')
+
 
 def SampleHome(request):
-    return render(request, 'Websites/index.html')
+    return render(request, 'homesample.html')
+
+def homepage(request):
+    return render(request, 'home2.html')
 
 
 def accommodations(request, id):
@@ -173,12 +182,60 @@ def guides(request, id):
     guides_class = Guide.objects.all()
     return render(request, '', {"guide": guides_class})
 
+
 def guide_List(request):
     guideList = Guide.objects.all()
     return render(request, 'Guides/admin/guidelist.html', {"guidance": guideList})
 
+
 def guide(request):
     TakeMe = Guide.objects.all()
     return render(request, 'Guides/User/guides.html', {"guideme": TakeMe})
+
+
+def signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('home/')
+    else:
+        form = UserCreationForm()
+    return render(request, 'signup.html', {"form": form})
+
+
+def login_view(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('home/')
+    else:
+        form = AuthenticationForm()
+    return render(request, 'login.html', {"form": form})
+
+
+def handle_form_submission(request):
+    if request.method == 'POST':
+        email_address = request.POST['email_address']
+
+        # Send email to the user using their provided email address
+        send_mail(
+            'Thank you for your interest in becoming a tour guide!',
+            'We have received your application and will review it shortly.',
+            'codesbynorris@gmail.com',
+            [email_address],
+            fail_silently=False
+        )
+
+    return render(request, '')
+
+
+def travel_packages(request):
+    travel_packages = TravelPackages.objects.all()
+    return render(request, 'home2.html', {'travel_packages': travel_packages})
+
 
 

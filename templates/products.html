@@ -1,0 +1,17 @@
+{% extends 'Websites/index.html' %}
+{% block content %}
+    <div class="product-cards">
+        {% for package in travel_packages %}
+            <div class="product-card">
+                <img src="{{ package.attraction.image.url }}" alt="{{ package.attraction.name }}">
+                <h3>{{ package.attraction.name }}</h3>
+                <p>Location: {{ package.attraction.location }}</p>
+                <p>Attraction Fee: ${{ package.attraction.fee }}</p>
+                <h4>Accommodation:</h4>
+                <p>{{ package.accommodation.name }}</p>
+                <p>Accommodation Location: {{ package.accommodation.location }}</p>
+                <p>Price: ${{ package.price }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
