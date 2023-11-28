@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+    <style>/* Reset default margin/padding */
+body, h1, h2, h3, p, ul {
+    margin: 0;
+    padding: 0;
+    background-color: #24252A;
+}
+
+/* Basic styles */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #333;
+    color: #fff;
+    height: 100vh;
+}
+
+.sidebar-header {
+    padding: 50px;
+    text-align: center;
+}
+
+.sidebar-header h3 {
+    margin-bottom: 5px;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-menu li {
+    padding: 10px;
+}
+
+.sidebar-menu li a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding-bottom: 30px;
+}
+
+.sidebar-menu li a:hover {
+    background-color: #555;
+}
+
+.logout {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+}
+ button{
+      padding: 9px 25px;
+      background-color: rgba(0,136,169,1);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease 0s;
+    }
+
+    button:hover{
+      background-color: rgba(0,136,169,0.8);
+    }
+    body, h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Basic styles */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.dashboard {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 32px;
+    color: #333;
+}
+
+.summary-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    flex: 1 1 300px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.card h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #333;
+}
+
+.card p {
+    font-size: 18px;
+    color: #666;
+}
+.heading {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+</style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3>{% if logged_in_user %}
+        <p>{{ logged_in_user.username }}</p>
+                {% endif %}</h3>
+            <p>Admin</p>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="{% url 'Hire' %}">Car Hire</a></li>
+            <li><a href="#">Accommodation</a></li>
+            <li><a href="#">Destination</a></li>
+            <li><a href="#">Attraction</a></li>
+        </ul>
+        <div class="logout">
+                <a href="{% url 'logout' %}"><button>Logout</button></a>
+        </div>
+    </div>
+
+    <div class="content">
+        <!-- Your admin content goes here -->
+            <div class="heading">
+        <div class="header">
+            <h1>Hi There, {% if logged_in_user %}
+        <p>{{ logged_in_user.username }}</p>
+                {% endif %}</h1>
+            <h2>Are you ready for what today holds ahead?</h2>
+        </div>
+
+    </div>
+
+        <div class="dashboard">
+        <div class="header">
+            <h1>Dashboard</h1>
+        </div>
+        <div class="summary-cards">
+            <div class="card">
+                <h2>Total Users</h2>
+                <p>1,234</p>
+            </div>
+            <div class="card">
+                <h2>Revenue</h2>
+                <p>$10,000</p>
+            </div>
+            <div class="card">
+                <h2>Orders</h2>
+                <p>567</p>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

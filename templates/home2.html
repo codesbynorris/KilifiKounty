@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
     <style>
 * {
   margin: 0;
@@ -31,7 +33,7 @@ header{
       padding: 15px 200px;
       transition: 0.5s ease;
     background-color: #fff;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     }
 
 header .brand{
@@ -87,8 +89,9 @@ color: #007bff;
   flex-wrap: nowrap;
   justify-content: space-between; /* Adjust as needed */
   gap: 20px; /* Adjust spacing between cards */
-  padding: 20px; /* Adjust padding around the container */
-  box-sizing: border-box;
+    /* Adjust padding around the container */
+    padding: 0 20px 20px;
+    box-sizing: border-box;
 }
 
 /* Style for individual product cards */
@@ -161,7 +164,6 @@ color: #007bff;
 .text2{
     font-style: italic;
     font-size: 1.1em;
-    font-style: italic;
     color: #777;
     margin-bottom: 30px;
 }
@@ -179,6 +181,135 @@ color: #007bff;
 }
 .category-images img:hover {
             transform: scale(1.05);
+        }
+.footer {
+      background-color: #f5f5f5;
+    padding: 50px 20px 20px;
+}
+
+.footer-container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+.footer-section {
+      margin-bottom: 20px;
+  /*margin-right: auto;*/
+ /* width: auto;*/
+    }
+
+#s1{
+        width: 20%;
+    }
+
+#s2{
+        width: 10%;
+    }
+#s3{
+        width: 45%;
+    }
+#s4{
+        width: 10%;
+    }
+#s5{
+        width: 15%;
+    }
+
+.footer-section h3 {
+  margin-bottom: 10px;
+  font-weight: bold;
+    }
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+    }
+
+.footer-section ul li {
+  margin-bottom: 5px;
+    }
+
+.footer-section ul li a {
+  color: #333;
+  text-decoration: none;
+    }
+
+.footer-section ul li a:hover {
+  color: blue;
+    }
+
+.footer-copyright {
+  text-align: center;
+  margin-top: 20px;
+    }
+
+.footer-copyright p {
+  margin-bottom: 0;
+    }
+.main-header {
+    /*margin-top: 100px; /* Add your desired space */
+    position: relative;
+    height: 70vh; /* 50% of the viewport height */
+    overflow: hidden;
+    color: #fff; /* Text color for header content */
+}
+
+.header-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../static/Images/header.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8;
+    z-index: -1;
+}
+
+.header-content {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+}
+.search-bar {
+    position: absolute;
+    bottom: 0; /* Adjust distance from the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+}
+
+.search-bar form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-bar input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff; /* Change button color as needed */
+    color: #fff;
+    cursor: pointer;
+}
+.products-container h2{
+    text-align: center;
+}
+#countdown {
+            font-size: 24px;
+            font-weight: bold;
+            /*text-align: center;*/
         }
 </style>
 
@@ -202,6 +333,22 @@ color: #007bff;
 </header>
 <br><br><br>
 
+<div class="main-header">
+
+<div class="header-background"></div>
+    <div class="header-content">
+        <!-- Your header content goes here -->
+        <h1>Your Website Name</h1>
+        <!-- Navigation links -->
+        <div class="search-bar">
+            <form action="/search/" method="GET">
+                <input type="text" name="search_query" placeholder="Search...">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</div>
+
 <div class="section-2">
     <h2>About Kilifi County</h2>
     <br>
@@ -222,19 +369,25 @@ color: #007bff;
     <p class="text2">If it's your first time traveling to the Coast, you're exactly where you need to be. Browse our site for endless destination inspirations and travel-tips</p>
     </div>
 
-<div class="product-cards">
-    {% for package in travel_packages %}
-        <div class="product-card">
+<div class="products-container">
+<h2>Limited Time Offers | <div id="countdown"></div> </h2>
 
-            <img src="{{ package.attraction.image.url }}" alt="{{ package.attraction.name }}">
+    <div class="product-cards">
+        {% for package in travel_packages %}
+            <div class="product-card">
 
-            <h1>{{ package.package_name }}</h1>
-            <p>{{ package.package_description }}</p>
-            <p><del>Was: Kshs.{{ package.was }}</del></p>
-            <p>Now: Kshs.{{ package.package_price }}</p>
+                <img src="{{ package.attraction.image.url }}" alt="{{ package.attraction.name }}">
 
-        </div>
+                    <h1>{{ package.package_name }}</h1>
+                    <p>{{ package.package_description }}</p>
+                    <p><del>Was: Kshs.{{ package.was }}</del></p>
+                    <p>Now: Kshs.{{ package.package_price }}</p>
+
+                        <a href="#" >Check out now</a>
+
+            </div>
         {% endfor %}
+    </div>
 </div>
 
 <div class="Categories">
@@ -247,7 +400,7 @@ color: #007bff;
         <img src="../static/Images/atrium.jpg" alt="">
         </a>
         <a href="{% url 'CarHire' %}">
-        <img src="../static/Images/car%20hire.jpg" alt="">
+        <img src="../static/Images/cars1.jpg" alt="">
         </a>
         <a href="{% url 'Attraction' %}">
         <img src="../static/Images/destination.jpeg" alt="">
@@ -269,9 +422,9 @@ color: #007bff;
       <div class="footer-section" id="s2">
         <h3>Social Media</h3>
         <ul class="social-media">
-          <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-          <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-          <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+          <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fab fa-instagram"></i></a></li>
         </ul>
       </div>
 
@@ -302,6 +455,32 @@ color: #007bff;
         <a href="#">Terms of Service | Privacy Policy</a>
     </div>
   </footer>
+<script>
+        // Set the date for the countdown (change this date to your desired target date)
+        const targetDate = new Date('December 31, 2023 00:00:00').getTime();
 
+        // Update the countdown every second
+        const countdown = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            // Calculate remaining time
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the countdown
+            document.getElementById('countdown').innerHTML = `
+                ${days}d ${hours}h ${minutes}m ${seconds}s
+            `;
+
+            // If the countdown is over, display a message
+            if (distance < 0) {
+                clearInterval(countdown);
+                document.getElementById('countdown').innerHTML = 'Countdown is over!';
+            }
+        }, 1000); // Update every second
+    </script>
 </body>
 </html>

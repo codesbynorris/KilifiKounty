@@ -1,3 +1,4 @@
+from django import forms
 from django.contrib.auth.models import AbstractUser, User
 from django.db import models
 
@@ -76,3 +77,15 @@ class TravelPackages(models.Model):
 
     def __str__(self):
         return f"{self.package_name} is {self.package_price}"
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
+    is_admin = forms.BooleanField(required=False, label='Admin')
+
+
+class SignupForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
+    is_admin = forms.BooleanField(required=False, label='Admin')

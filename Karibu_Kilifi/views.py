@@ -1,12 +1,17 @@
-from django.contrib.auth import login
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.forms import ModelForm
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect
-from django.urls import reverse
 
-from Karibu_Kilifi.models import carHire, destination, accommodation, attraction, Guide, TravelPackages
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import render, redirect
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_protect
+
+from Karibu_Kilifi.models import carHire, destination, accommodation, attraction, Guide, TravelPackages, LoginForm, \
+    SignupForm
 
 
 # Create your views here.
@@ -99,12 +104,14 @@ def carCheckOut(request):
     CheckOut = carHire.objects.all()
     return render(request, 'Car Hire/User/car_hire.html', {"hire": CheckOut})
 
+
 def CarInfo(request):
     return render(request, 'Car Hire/User/carhire_login.html')
 
 
 def SampleHome(request):
     return render(request, 'homesample.html')
+
 
 def homepage(request):
     return render(request, 'home2.html')
@@ -193,28 +200,58 @@ def guide(request):
     return render(request, 'Guides/User/guides.html', {"guideme": TakeMe})
 
 
-def signup(request):
+def signup_view(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = SignupForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect('home/')
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            is_admin = form.cleaned_data['is_admin']
+
+            # Check if the user already exists
+            if User.objects.filter(username=username).exists():
+                # Handle case when the username is already taken
+                error_message = 'Username already exists. Please choose a different username.'
+                return render(request, 'signup.html', {'form': form, 'error_message': error_message})
+
+            # Create a new user account
+            user = User.objects.create_user(username=username, password=password)
+
+            # Set user as admin based on checkbox value
+            if is_admin:
+                user.is_staff = True
+                user.is_superuser = True
+                user.save()
+            return redirect('login')
     else:
-        form = UserCreationForm()
-    return render(request, 'signup.html', {"form": form})
+        form = SignupForm()
+    return render(request, 'signup.html', {'form': form})
 
 
+@csrf_protect
 def login_view(request):
     if request.method == 'POST':
-        form = AuthenticationForm(data=request.POST)
+        form = LoginForm(request.POST)
         if form.is_valid():
-            user = form.get_user()
-            login(request, user)
-            return redirect('home/')
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            is_admin = form.cleaned_data['is_admin']
+            user = authenticate(username=username, password=password)
+
+            if user:
+                login(request, user)
+                # Redirect user based on role
+                if is_admin:
+                    return redirect('admin')
+                else:
+                    return redirect('normal')
+            else:
+                error_message = "Invalid username or password."
+                return render(request, 'login.html', {'form': form, 'error_message': error_message})
     else:
-        form = AuthenticationForm()
-    return render(request, 'login.html', {"form": form})
+        form = LoginForm()
+
+    return render(request, 'login.html', {'form': form})
 
 
 def handle_form_submission(request):
@@ -238,4 +275,28 @@ def travel_packages(request):
     return render(request, 'home2.html', {'travel_packages': travel_packages})
 
 
+from django.shortcuts import render
 
+
+def login_status(request):
+    logged_in_user = request.user
+    return render(request, 'Admin.html', {'logged_in_user': logged_in_user})
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('normal')
+
+
+def search_cars(request):
+    query = request.GET.get('search_query')  # Assuming the search query parameter is named 'q'
+    gari = carHire.objects.all()
+
+    if query:
+        # Perform filtering based on the search query
+        gari = gari.filter(
+            model__icontains=query  # Change 'models' to the field you want to search
+            # You can add more filters based on other fields (make, price, etc.) here
+        )
+
+    return render(request, 'car_search_results.html', {'cars': gari})

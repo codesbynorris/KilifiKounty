@@ -20,22 +20,24 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-import Karibu_Kilifi
-from Karibu_Kilifi import urls
+from Karibu_Kilifi import views
 from Karibu_Kilifi.views import addnew, addDestination, addAccommodation, addAttraction, carHire_list, cars, \
     carCheckOut, SampleHome, accommodation_List, accommodate, attraction_List, attract, destination_List, destine, \
-    successfulapplication, hireguide, guide_List, guide, signup, login_view, travel_packages, homepage, CarInfo
+    successfulapplication, hireguide, guide_List, guide, signup_view, login_view, travel_packages, homepage, CarInfo, \
+    login_status, logout_view, search_cars
 
 urlpatterns = [
                   path('admin/', admin.site.urls),
+                  path('admin_site/', login_status,  name='admin'),
 
                   # SignUp & Login
                   # path('Karibu_Kilifi/', include(Karibu_Kilifi.urls)),
-                  path('signup/', signup, name='signup'),
+                  path('signup/', signup_view, name='signup'),
                   path('login/', login_view, name='login'),
+                  path('logout/', logout_view, name='logout'),
 
                   # Car Hire admin
-                  path('addnew/', addnew),
+                  path('addnew/', addnew, name='Hire'),
                   path('addnew/carsforhirelist/', carHire_list),
                   # Car Hire User
                   path('carinfo/', CarInfo,),
@@ -68,11 +70,12 @@ urlpatterns = [
                   # guides users
                   path('guides/', guide),
 
-                  path('home/', SampleHome),
+                  path('home/', SampleHome, name='normal'),
                   # path('home2/', homepage, name='homepage'),
                   # Broken Links
                   path('car/<int:id>', cars),
                   path('test/', travel_packages, name='homepage'),
+                  path('search/', search_cars, name='search'),
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

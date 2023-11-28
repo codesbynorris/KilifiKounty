@@ -1,85 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>King Kong Car Hire Company</title>
-    <style>
-body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
-}
+{% extends 'Websites/index.html' %}
+{% load static %}
+{% block title %}
+<title>Gari</title>
+{% endblock %}
 
-.container {
-  width: 80%;
-  margin: 20px auto;
-  background-color: #fff;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-  text-align: center;
-  color: #333;
-}
-
-h2 {
-  color: #333;
-}
-
-.intro {
-  font-size: 18px;
-  color: #666;
-}
-
-ul {
-  list-style-type: circle;
-  padding: 10px;
-}
-
-li {
-  margin-bottom: 10px;
-}
-span{
-    font-weight: bold;
-}
-.contact {
-  font-weight: bold;
-  text-align: center;
-  color: #333;
-}
-
-a {
-      display: inline-block;
-      padding: 10px 20px;
-      margin-top: 20px;
-      text-decoration: none;
-      color: #fff; /* Text color */
-      background-color: #333; /* Background color */
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-    }
-
-    /* Hover effect for the anchor element */
-    a:hover {
-      background-color: #555; /* Hover background color */
-    }
-
-    /* Adjustments for responsive design (optional) */
-    @media screen and (max-width: 768px) {
-      a {
-        display: block;
-        width: 100%;
-        margin-top: 15px;
-      }
-    }
-
-    </style>
-</head>
-<body>
+{% block content %}
+    <link rel="stylesheet" href="{% static 'index2.css' %}">
   <div class="container">
     <h1>Welcome to King Kong Car Hire!</h1>
     <p class="intro">At King Kong Car Hire, we're dedicated to providing you with a seamless and enjoyable car rental experience. Whether you're traveling for business or pleasure, our diverse fleet of vehicles is meticulously maintained and equipped to meet your needs.</p>
@@ -100,5 +26,4 @@ a {
       <a href="{% url 'CarHire' %}">Rent a Car</a>
   </div>
 
-</body>
-</html>
+{% endblock %}

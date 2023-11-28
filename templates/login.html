@@ -7,7 +7,7 @@
 {% block content %}
     <h2>Login</h2>
      <div class="wrapper">
-    <form action="" method="post">
+    <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="Submit" value="SUBMIT">
