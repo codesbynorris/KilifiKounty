@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /* Basic styling for the form elements */
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input[type="date"],
+        select {
+            width: calc(100% - 12px);
+            padding: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        p#result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<form id="rentalForm">
+    <label for="departureDate">Departure Date:</label>
+    <input type="date" id="departureDate" name="departureDate" required><br><br>
+
+    <label for="returnDate">Return Date:</label>
+    <input type="date" id="returnDate" name="returnDate" required><br><br>
+
+    <label for="pickupLocation">Pick-up Location:</label>
+    <select id="pickupLocation" name="pickupLocation" required>
+        <option value="1">Kilifi Town</option>
+        <option value="2">Mnarani</option>
+        <option value="3">Mkoroshoni</option>
+    </select><br><br>
+
+    <button type="button" onclick="validateForm()">Calculate Days</button><br><br>
+
+    <p id="result"></p>
+</form>
+
+<script>
+    function calculateDays() {
+        const departureDate = new Date(document.getElementById('departureDate').value);
+        const returnDate = new Date(document.getElementById('returnDate').value);
+        const pickupLocation = document.getElementById('pickupLocation').value;
+
+        if (returnDate <= departureDate) {
+            alert('Return date should be after the departure date.');
+            return;
+        }
+
+        const timeDiff = returnDate.getTime() - departureDate.getTime();
+        const daysDifference = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+        document.getElementById('result').innerHTML = `Pick-up Location: ${pickupLocation}<br>Number of days: ${daysDifference}`;
+    }
+
+    function validateForm() {
+        const departureDate = new Date(document.getElementById('departureDate').value);
+        const returnDate = new Date(document.getElementById('returnDate').value);
+        const pickupLocation = document.getElementById('pickupLocation').value;
+        const today = new Date(); // Get today's date
+
+if (departureDate < today) {
+            alert('Departure date cannot be a past date.');
+            return;
+        }
+
+        if (departureDate === '' || returnDate === '' || pickupLocation === '') {
+            alert('Please fill in all fields.');
+            return;
+        }
+
+        // Proceed with calculation if all fields are filled
+        calculateDays();
+    }
+</script>
+
+</body>
+</html>
