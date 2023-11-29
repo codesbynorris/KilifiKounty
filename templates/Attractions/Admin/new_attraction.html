@@ -1,11 +1,12 @@
-{% extends 'Websites/index.html' %}
+{% extends 'AdminIndex.html' %}
 
 {% block title %}
     <title>Car Hire</title>
 {% endblock %}
 
 {% block content %}
-<h1>Add an Attraction Site</h1>
+<div class="block1">
+<h1>New Attraction Site</h1>
    <div class="wrapper">
 <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
@@ -13,4 +14,5 @@
         <input type="Submit" value="SUBMIT">
     </form>
         </div>
+</div>
 {% endblock %}

@@ -1,0 +1,246 @@
+body, h1, h2, h3, p, ul {
+    margin: 0;
+    padding: 0;
+    background-color: #eeece4;
+}
+h1{
+    color: #001f3f;
+}
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #eeece4;
+    color: #fff;
+    height: 100%;
+    position: fixed;
+    overflow-y: auto;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Box shadow properties */
+
+}
+
+.sidebar-header {
+    padding: 50px;
+    text-align: center;
+}
+
+.sidebar-header h3 {
+    margin-bottom: 5px;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-menu li {
+    padding: 10px;
+}
+
+.sidebar-menu li a {
+    color: #008080;
+    text-decoration: none;
+    display: block;
+    padding: 20px;
+}
+.sidebar-menu li:hover{
+    background-color: #d6d4c1;
+}
+.sidebar-menu li a:hover{
+    color: #ffffff;
+}
+.sidebar-menu li a:hover {
+}
+
+.logout {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+}
+ button{
+      padding: 9px 25px;
+      background-color: rgba(0,136,169,1);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease 0s;
+      background-color: #b5b29e;
+    }
+
+    button:hover{
+      background-color: rgba(0,136,169,0.8);
+    }
+    body, h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.dashboard {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 32px;
+    color: #003300;
+}
+
+.summary-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    flex: 1 1 300px;
+    padding: 20px;
+    background-color: #eeece4;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.card h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #333;
+}
+
+.card p {
+    font-size: 18px;
+    color: #666;
+}
+.heading {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: #eeece4;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 10px 100px 10px 10px;
+
+}
+        .row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        /*101*/
+.wrapper{
+  width: 500px;
+  padding: 2rem 0 1rem 0;
+  margin: 50px;
+  background-color: #f0efe5;
+  border-radius: 10px;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+form input{
+  width: 80%;
+  outline: none;
+  border: none;
+  background: #e6e4dc;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  margin-right: 500px;
+  margin-left: 50px;
+  border-radius: 10px;
+}
+
+label{
+   margin: 20px;
+    color: #333333;
+}
+
+input[type="submit"] {
+  background-color: #b5b29e;
+  color: #fff;
+  border-color: #007bff;
+  border-radius: 0.5rem;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  cursor: pointer;
+  width: 50%;
+}
+textarea{
+    background-color: #e6e4dc;
+}
+.user{
+    font-size: x-large;
+    color: #008080;
+}
+.sidebar-menu li a{
+        border-bottom: 1px solid #ddd; /* Add a border for separation */
+
+}
+.block{
+    padding-left: 400px;
+}
+.block1{
+    padding-left: 200px
+}
+
+/*Tables*/
+#cars {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#cars td, #cars th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#cars tr:nth-child(even){background-color: #f2f2f2;}
+
+#cars tr:hover {background-color: #ddd;}
+
+#cars th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #777777;
+  color: white;
+}
+.tablelist{
+    padding-top: 100px;
+}

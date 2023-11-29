@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'admincss.css' %}">
+
+    {% block title %}
+    <title>Admin Index</title>
+    {% endblock %}
+
+</head>
+
+<body>
+<div class="sidebar">
+        <div class="sidebar-header">
+            <h3>{% if logged_in_user %}
+        <p>{{ logged_in_user.username }}</p>
+                {% endif %}</h3>
+            <p class="user">Admin</p>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="{% url 'admin' %}">Dashboard</a></li>
+            <li><a href="{% url 'Hire' %}">Car Hire</a></li>
+            <li><a href="{% url 'Accommodate' %}">Accommodation</a></li>
+            <li><a href="{% url 'NewDestination' %}">Destination</a></li>
+            <li><a href="{% url 'NewAttraction' %}">Attraction</a></li>
+            <li><a href="{% url 'Guide_List' %}">Guides</a></li>
+        </ul>
+        <div class="logout">
+                <a href="{% url 'logout' %}"><button>Logout</button></a>
+        </div>
+</div>
+<div class="block">
+{% block content %}
+{% endblock %}
+</div>
+</body>
+</html>

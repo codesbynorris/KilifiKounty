@@ -1,10 +1,12 @@
-{% extends 'Websites/index.html' %}
+{% extends 'AdminIndex.html' %}
 
 {% block title %}
     <title>Destinations</title>
 {% endblock %}
 
 {% block content %}
+        <div class="tablelist">
+
     <table id="cars">
     <thead>
         <tr>
@@ -15,7 +17,7 @@
         </tr>
     </thead>
     <tbody>
-    {% for destinations in destine %}
+    {% for destinations in destiny %}
     <tr>
         <td> {{destinations.name}} </td>
         <td>{{ destinations.link }}</td>
@@ -29,6 +31,7 @@
     </tr>
         {% endfor %}
     </tbody>
-</table>
+    </table>
+        </div>
 {% endblock %}
 

@@ -1,0 +1,9 @@
+{% for notification in notifications %}
+    <li>
+        <span>{{ notification.message }}</span>
+        <!-- You can add additional details or formatting for each notification -->
+        <span class="timestamp">{{ notification.timestamp }}</span>
+    </li>
+{% empty %}
+    <li>No new notifications</li>
+{% endfor %}

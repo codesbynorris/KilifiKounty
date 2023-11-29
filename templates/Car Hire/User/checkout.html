@@ -4,29 +4,37 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-        /* Basic styling for the form elements */
-        form {
+  *{
+    background-color: #ADD8E6;
+}
+form {
             max-width: 400px;
             margin: 0 auto;
             padding: 20px;
             border: 1px solid #ccc;
             border-radius: 8px;
-            background-color: #f9f9f9;
+            background-color: #C0E8F9;
         }
 
         label {
             display: block;
             margin-bottom: 6px;
             font-weight: bold;
+            background-color: #C0E8F9;
         }
 
+
         input[type="date"],
-        select {
+        input[type="number"] {
             width: calc(100% - 12px);
             padding: 8px;
             margin-bottom: 12px;
             border: 1px solid #ccc;
             border-radius: 4px;
+            background-color: #E6F7FF;
+        }
+        input#childrenAge {
+            background-color: #E6F7FF;
         }
 
         button {
@@ -45,6 +53,7 @@
         p#result {
             margin-top: 20px;
             font-weight: bold;
+            background-color: #C0E8F9;
         }
     </style>
 </head>
@@ -72,7 +81,6 @@
     function calculateDays() {
         const departureDate = new Date(document.getElementById('departureDate').value);
         const returnDate = new Date(document.getElementById('returnDate').value);
-        const pickupLocation = document.getElementById('pickupLocation').value;
 
         if (returnDate <= departureDate) {
             alert('Return date should be after the departure date.');
@@ -82,7 +90,7 @@
         const timeDiff = returnDate.getTime() - departureDate.getTime();
         const daysDifference = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
-        document.getElementById('result').innerHTML = `Pick-up Location: ${pickupLocation}<br>Number of days: ${daysDifference}`;
+        document.getElementById('result').innerHTML = `Number of days: ${daysDifference}`;
     }
 
     function validateForm() {

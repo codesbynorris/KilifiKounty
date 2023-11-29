@@ -1,17 +1,21 @@
+from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
+from django.dispatch import receiver
 from django.forms import ModelForm
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
+from django_daraja.mpesa.core import MpesaClient
+
 
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import authenticate, login, logout
-from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout, user_logged_in
+from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_protect
 
 from Karibu_Kilifi.models import carHire, destination, accommodation, attraction, Guide, TravelPackages, LoginForm, \
-    SignupForm
+    SignupForm, Notification, SubscriptionForm, Subscriber
 
 
 # Create your views here.
@@ -195,7 +199,7 @@ def guide_List(request):
     return render(request, 'Guides/admin/guidelist.html', {"guidance": guideList})
 
 
-def guide(request):
+def guider(request):
     TakeMe = Guide.objects.all()
     return render(request, 'Guides/User/guides.html', {"guideme": TakeMe})
 
@@ -208,7 +212,6 @@ def signup_view(request):
             password = form.cleaned_data['password']
             is_admin = form.cleaned_data['is_admin']
 
-            # Check if the user already exists
             if User.objects.filter(username=username).exists():
                 # Handle case when the username is already taken
                 error_message = 'Username already exists. Please choose a different username.'
@@ -219,7 +222,7 @@ def signup_view(request):
 
             # Set user as admin based on checkbox value
             if is_admin:
-                user.is_staff = True
+                user.is_staff = False
                 user.is_superuser = True
                 user.save()
             return redirect('login')
@@ -240,34 +243,17 @@ def login_view(request):
 
             if user:
                 login(request, user)
-                # Redirect user based on role
                 if is_admin:
                     return redirect('admin')
                 else:
-                    return redirect('normal')
+                    return redirect('homepage')
             else:
-                error_message = "Invalid username or password."
-                return render(request, 'login.html', {'form': form, 'error_message': error_message})
+                form.add_error(None, "Invalid username or password.")  # Add form-level error
+
     else:
         form = LoginForm()
 
     return render(request, 'login.html', {'form': form})
-
-
-def handle_form_submission(request):
-    if request.method == 'POST':
-        email_address = request.POST['email_address']
-
-        # Send email to the user using their provided email address
-        send_mail(
-            'Thank you for your interest in becoming a tour guide!',
-            'We have received your application and will review it shortly.',
-            'codesbynorris@gmail.com',
-            [email_address],
-            fail_silently=False
-        )
-
-    return render(request, '')
 
 
 def travel_packages(request):
@@ -275,11 +261,12 @@ def travel_packages(request):
     return render(request, 'home2.html', {'travel_packages': travel_packages})
 
 
-from django.shortcuts import render
-
-
 def login_status(request):
-    logged_in_user = request.user
+    if request.user.is_authenticated:
+        logged_in_user = request.user
+    else:
+        logged_in_user = None
+
     return render(request, 'Admin.html', {'logged_in_user': logged_in_user})
 
 
@@ -289,14 +276,121 @@ def logout_view(request):
 
 
 def search_cars(request):
-    query = request.GET.get('search_query')  # Assuming the search query parameter is named 'q'
-    gari = carHire.objects.all()
+    search_query = request.GET.get('search_query')
+    results = None
 
-    if query:
-        # Perform filtering based on the search query
-        gari = gari.filter(
-            model__icontains=query  # Change 'models' to the field you want to search
-            # You can add more filters based on other fields (make, price, etc.) here
-        )
+    if search_query:
+        results = (carHire.objects.filter(make__icontains=search_query) |
+                   carHire.objects.filter(model__icontains=search_query))
+        # You can add more filters or refine the search query based on your needs
 
-    return render(request, 'car_search_results.html', {'cars': gari})
+    hire = carHire.objects.all()  # Retrieve all cars for initial display
+
+    return render(request, 'Car Hire/User/car_hire.html', {'results': results, 'hire': hire})
+
+
+def reservation_form(request):
+    tour_guides = Guide.objects.all()
+
+    context = {
+        'tour_guides': tour_guides
+    }
+    return render(request, 'Attractions/User/reservation.html', context)
+
+
+def create_notification(user, message):
+    Notification.objects.create(user=user, message=message)
+
+
+@receiver(user_logged_in)
+def user_logged_in_handler(sender, user, request, **kwargs):
+    message = "Welcome back! You've logged in."
+    create_notification(user, message)
+
+
+def get_notifications(request):
+    if request.user.is_authenticated:
+        notifications = Notification.objects.filter(user=request.user, is_read=False)
+        return render(request, 'notifications.html', {'notifications': notifications})
+    else:
+        return render(request, 'notifications.html', {'notifications': []})
+
+
+def carcheckout(request):
+    return render(request, 'Car Hire/User/checkout.html')
+
+
+def attractioncheckout(request):
+    return render(request, 'Attractions/User/reservation.html')
+
+
+def accommodationreservation(request):
+    return render(request, 'Accommodations/User/reservation.html')
+
+
+def Package_Reservation(request):
+    return render(request, 'packagereservation.html')
+
+
+def car_count(request):
+    total_cars = carHire.objects.count()
+    print("Total Cars Count:", total_cars)
+    return render(request, 'Admin.html', {'total_cars': total_cars})
+
+
+def ad_site_view(request):
+    total_cars = carHire.objects.count()
+    return render(request, 'Admin.html', {'total_cars': total_cars})
+
+
+def update_guide(request, guide_id):
+    guide = get_object_or_404(Guide, id=guide_id)
+    return render(request, 'update_guide.html', {'guide': guide})
+
+
+def save_guide_changes(request, guide_id):
+    guide = get_object_or_404(Guide, id=guide_id)
+
+    if request.method == 'POST':
+        guide.firstname = request.POST.get('firstname')
+        guide.middle_name = request.POST.get('middle_name')
+        guide.surname = request.POST.get('surname')
+        guide.age = request.POST.get('age')
+        guide.dob = request.POST.get('dob')
+
+        if 'image' in request.FILES:
+            guide.image = request.FILES['image']
+
+        # Save the updated guide data
+        guide.save()
+
+        # Redirect to guide list or any other appropriate page after saving changes
+        return HttpResponseRedirect('/guidelist/')  # Replace '/guide_list/' with your actual URL
+
+    return render(request, 'update_guide.html', {'guide': guide})  # Render the same page if not POST request
+
+
+def delete_guide(request, guide_id):
+    guide = get_object_or_404(Guide, id=guide_id)
+    if request.method == 'POST':
+        guide.delete()
+        messages.success(request, 'Guide deleted successfully')
+    return redirect('guidelist/')
+
+
+def index(request):
+    cl = MpesaClient()
+    # Use a Safaricom phone number that you have access to, for you to be able to view the prompt.
+    phone_number = '0723452067'
+    amount = 1
+    account_reference = 'reference'
+    transaction_desc = 'Description'
+    callback_url = 'https://darajambili.herokuapp.com/express-payment';
+    response = cl.stk_push(phone_number, amount, account_reference, transaction_desc, callback_url)
+    return HttpResponse(response)
+
+
+def stk_push_callback(request):
+    data = request.body
+
+    return HttpResponse("STK Push in Django👋")

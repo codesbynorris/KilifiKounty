@@ -1,10 +1,11 @@
-{% extends 'Websites/index.html' %}
+{% extends 'AdminIndex.html' %}
 
 {% block title %}
-    <title>Car Hire</title>
+    <title>Attraction Lists</title>
 {% endblock %}
 
 {% block content %}
+        <div class="tablelist">
     <table id="cars">
     <thead>
         <tr>
@@ -31,6 +32,7 @@
         {% endfor %}
     </tbody>
 </table>
+</div>
 {% endblock %}
 
 </body>

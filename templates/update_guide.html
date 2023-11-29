@@ -1,0 +1,34 @@
+{% extends 'AdminIndex.html' %}
+
+{% block title %}
+    <title>Guides List</title>
+{% endblock %}
+{% block content %}
+
+    <h1>Update Guide</h1>
+    <form method="POST" action="{% url 'save_guide_changes' guide.id %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- Update Guide Form Fields -->
+        <label for="firstname">First Name:</label>
+        <input type="text" id="firstname" name="firstname" value="{{ guide.firstname }}"><br><br>
+
+        <label for="middle_name">Middle Name:</label>
+        <input type="text" id="middle_name" name="middle_name" value="{{ guide.middle_name }}"><br><br>
+
+        <label for="surname">Surname:</label>
+        <input type="text" id="surname" name="surname" value="{{ guide.surname }}"><br><br>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" value="{{ guide.age }}"><br><br>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" value="{{ guide.dob }}"><br><br>
+
+        <label for="image">Image:</label>
+        <input type="file" id="image" name="image" value="{{ guide.image }}"><br><br>
+
+        <button type="submit" class="update-btn">Save Changes</button>
+        <a href="{% url 'Guide_List' %}" class="delete-btn">Cancel</a>
+    </form>
+{% endblock %}
+

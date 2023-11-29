@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tour Guide Reservation Form</title>
+    <style>
+  *{
+    background-color: #ADD8E6;
+}
+form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #C0E8F9;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            background-color: #C0E8F9;
+        }
+
+
+        input[type="date"],
+        input[type="number"] {
+            width: calc(100% - 12px);
+            padding: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #E6F7FF;
+        }
+        input#childrenAge {
+            background-color: #E6F7FF;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <form id="reservationForm" onsubmit="return validateForm()">
+        <label for="travelDate">Travel Date:</label>
+        <input type="date" id="travelDate" name="travelDate" required><br><br>
+
+        <label for="numAdults">Number of Adults:</label>
+        <input type="number" id="numAdults" name="numAdults" min="1" required><br><br>
+
+        <label for="numChildren">Number of Children:</label>
+        <input type="number" id="numChildren" name="numChildren" min="0" required><br><br>
+
+        <label for="childrenAge">Children's Age (if any):</label>
+        <input type="text" id="childrenAge" name="childrenAge" placeholder="Separate ages by commas"><br><br>
+
+        <input type="checkbox" id="includeGuides" name="includeGuides" onchange="showGuidesField()">
+        <label for="includeGuides">Include Guides</label><br><br>
+
+        <select id="guidesField" name="guidesField" style="display: none;">
+            {% for guides in tour_guides %}
+        <option value="{{ guides.age }}">{{ guides.firstname }} {{ guides.middle_name }} {{ guides.surname }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        function showGuidesField() {
+            const guidesCheckbox = document.getElementById('includeGuides');
+            const guidesField = document.getElementById('guidesField');
+
+            // Show/hide the guides field based on checkbox state
+            guidesField.style.display = guidesCheckbox.checked ? 'block' : 'none';
+        }
+
+        function validateForm() {
+            const travelDate = new Date(document.getElementById('travelDate').value);
+            const numAdults = document.getElementById('numAdults').value;
+            const numChildren = document.getElementById('numChildren').value;
+
+            // Check if the travel date is not in the past
+            const today = new Date();
+            if (travelDate < today) {
+                alert('Travel date cannot be in the past.');
+                return false;
+            }
+
+            // Check if all fields are filled out
+            if (numAdults === '' || numChildren === '') {
+                alert('Please fill in all fields.');
+                return false;
+            }
+
+            return true; // Submit the form if all validations pass
+        }
+    </script>
+</body>
+</html>

@@ -1,18 +1,20 @@
-{% extends 'Websites/index.html' %}
+{% extends 'AdminIndex.html' %}
 
 {% block title %}
-    <title>Destinations</title>
+    <title>Guides List</title>
 {% endblock %}
 
 {% block content %}
+        <div class="tablelist">
+
     <table id="cars">
     <thead>
         <tr>
             <th>Name</th>
             <th>Age</th>
             <th>Date of Birth</th>
-
             <th>Image</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -28,8 +30,45 @@
                 No Image Available
             {% endif %}
         </td>
+    <td>
+    <button onclick="deleteGuide('{{ guides.id }}')">Delete</button>
+    <button onclick="updateGuide('{{ guides.id }}')">Update</button>
+
+</td>
+
+
     </tr>
     {% endfor %}
     </tbody>
     </table>
+        </div>
+    <script>
+    // Function to handle guide deletion
+    function deleteGuide(guideId) {
+        if (confirm("Are you sure you want to delete this record?")) {
+            // Send an AJAX request to delete the guide
+            fetch(`/delete_guide/${guideId}/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}' // Ensure you have access to the CSRF token here
+                },
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        location.reload(); // Refresh the page immediately after deletion confirmation
+                    } else {
+                        alert('Failed to delete the guide: ' + data.error);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    }
+    function updateGuide(guideId) {
+        window.location.href = `/update_guide/${guideId}/`; // Redirect to the update_guide.html page with guide ID
+    }
+</script>
 {% endblock %}

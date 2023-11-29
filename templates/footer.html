@@ -11,9 +11,10 @@
     <div class="footer-container">
       <div class="footer-section" id="s1">
         <h3>Newsletter</h3>
-        <form action="#">
+        <form method="post" action="">
+                {% csrf_token %}
             <p>By subscribing, you agree to our Terms and Conditions</p>
-          <input type="email" placeholder="Enter your email" required>
+          <input type="email" name="email" placeholder="Enter your email" required><br>
           <button type="submit">Subscribe</button>
         </form>
       </div>

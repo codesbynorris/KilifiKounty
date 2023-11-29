@@ -18,7 +18,7 @@
                 Description: {{ attractions.description }}<br>
                 Fee: {{ attractions.fee }} <br>
 
-                <a href="#">Check out now</a>
+                <a href="{% url 'AttractionReservation' %}">Check out now</a>
             </div>
         </div>
     {% endfor %}

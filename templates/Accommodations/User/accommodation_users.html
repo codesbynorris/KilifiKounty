@@ -17,7 +17,7 @@
                 Type: {{ accommodations.type }}<br>
                 No. of Rooms: {{ accommodations.rooms }}<br>
                 Price: {{ cars.price }} <br>
-                <a href="#">Check out now</a>
+                <a href="{% url 'AccommodationReservation' %}">Check out now</a>
             </div>
         </div>
     {% endfor %}

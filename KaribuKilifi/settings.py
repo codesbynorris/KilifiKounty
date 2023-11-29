@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Karibu_Kilifi.apps.KaribuKilifiConfig',
+    'django_daraja',
+
 ]
 
 MIDDLEWARE = [
@@ -49,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'KaribuKilifi.urls'
@@ -135,11 +138,18 @@ LOGIN_URL = reverse_lazy('login')
 LOGOUT_URL = reverse_lazy('logout')
 LOGIN_REDIRECT_URL = reverse_lazy('home')  # Change 'home' to your desired redirect URL after login
 
+MPESA_ENVIRONMENT = 'sandbox'
+
+MPESA_CONSUMER_KEY = 'BZ6U1kOXziF4nx5fgogTicVvh7czwlmH'
+MPESA_CONSUMER_SECRET = '0SCpGPG3EMmG7sOY'
+MPESA_PASSKEY = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'
+MPESA_INITIATOR_USERNAME = 'testapi'
+MPESA_INITIATOR_PASSWORD = 'Safaricom999!*!'
 
 # Email configuration
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'codesbynorris@gmail.com'
-EMAIL_HOST_PASSWORD = '1234'
+# settings.py
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025  # Change if needed based on your email setup
+

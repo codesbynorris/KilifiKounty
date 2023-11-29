@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservation Form</title>
+    <style>
+        /* Basic styling for the form elements */
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input[type="date"],
+        input[type="number"] {
+            width: calc(100% - 12px);
+            padding: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <form id="reservationForm" onsubmit="return validateForm()">
+        <label for="pickupDate">Check-in Date:</label>
+        <input type="date" id="pickupDate" name="pickupDate" required><br><br>
+
+        <label for="numAdults">Number of Adults:</label>
+        <input type="number" id="numAdults" name="numAdults" min="1" required><br><br>
+
+        <label for="numChildren">Number of Children:</label>
+        <input type="number" id="numChildren" name="numChildren" min="0" required><br><br>
+
+        <label for="childrenAge">Children's Age (if any):</label>
+        <input type="text" id="childrenAge" name="childrenAge" placeholder="Separate ages by commas"><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            const pickupDate = new Date(document.getElementById('pickupDate').value);
+            const numAdults = document.getElementById('numAdults').value;
+            const numChildren = document.getElementById('numChildren').value;
+
+            // Check if the pick-up date is not in the past
+            const today = new Date();
+            if (pickupDate < today) {
+                alert('Pick-up date cannot be in the past.');
+                return false;
+            }
+
+            // Check if all fields are filled out
+            if (numAdults === '' || numChildren === '') {
+                alert('Please fill in all fields.');
+                return false;
+            }
+
+            return true; // Submit the form if all validations pass
+        }
+    </script>
+</body>
+</html>

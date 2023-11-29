@@ -1,389 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+{% extends 'Websites/index.html' %}
+
+{% block title %}
     <title>Title</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+{% endblock %}
 
-    <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: sans-serif;
-
-}
-body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-        }
-header{
-      z-index: 999;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 200px;
-      transition: 0.5s ease;
-    background-color: #fff;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-header .brand{
-      color: #007bff;
-      font-size: 1.8em;
-      font-weight: 700;
-      text-transform: uppercase;
-      text-decoration: none;
-      margin-left: 20px;
-    }
-
-header .navigation .navigation-items a{
-      position: relative;
-      color: #333;
-      font-size: 1.1em;
-      font-weight: 500;
-      text-decoration: none;
-      margin-left: 30px;
-      transition: 0.3s ease;
-    }
-
-header .navigation .navigation-items a:before {
-      content: '';
-      position: absolute;
-      background: black;
-      width: 0;
-      height: 3px;
-      bottom: 0;
-      left: 0;
-      transition: 0.3s ease;
-    }
-
-header .navigation .navigation-items a:hover:before {
-      width: 100%;
-    }
-header .navigation .navigation-items a:hover {
-       color: #007bff;
-       }
-
-.section-2 {
-    padding: 40px;
-    background-color: #fff;
-            text-align: center;
-}
-
-.section-2 h2 {
-color: #007bff;
-            font-size: 2em;
-            margin-bottom: 20px;}
-
-.product-cards {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between; /* Adjust as needed */
-  gap: 20px; /* Adjust spacing between cards */
-    /* Adjust padding around the container */
-    padding: 0 20px 20px;
-    box-sizing: border-box;
-}
-
-/* Style for individual product cards */
-.product-card {
-  flex: 0 0 auto; /* Adjust card flex properties */
-  width: 33.33%; /* Adjust card width and spacing */
-  max-width: calc(33.33% - 20px); /* Adjust max-width for responsiveness */
-  background-color: #ffffff;
-  border: 1px solid #e1e1e1;
-  border-radius: 8px;
-  padding: 20px;
-  box-sizing: border-box;
-}
-
-.product-card img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  object-fit: cover;
-
-}
-
-.product-card h2 {
-  font-size: 18px;
-  margin-top: 10px;
-  margin-bottom: 8px;
-  text-align: center;
-
-}
-
-.product-card p {
-  font-size: 14px;
-  margin-bottom: 12px;
-  text-align: center;
-}
-
-.product-card .price {
-  font-weight: bold;
-  color: #333333;
-}
-
-.product-card a {
-  display: inline-block;
-  padding: 8px 16px;
-  background-color: #007bff;
-  color: #ffffff;
-  text-decoration: none;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-
-.product-card a:hover {
-  background-color: #0056b3;
-}
-.about_text{
-
-    font-size: 1.1em;
-    line-height: 1.8;
-    color: #555;
-    margin-bottom: 20px;
-}
-.text1{
-
-    font-size: 1.2em;
-    text-transform: uppercase;
-    font-weight: bold;
-    color: #007bff;
-    margin-top: 30px;
-}
-.text2{
-    font-style: italic;
-    font-size: 1.1em;
-    color: #777;
-    margin-bottom: 30px;
-}
-.Categories{
-    padding-top: 20px;
-    text-align: center;
-}
-.category-images img{
-            width: 350px;
-            height: 500px;
-            margin: 10px;
-            border-radius: 8px;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-}
-.category-images img:hover {
-            transform: scale(1.05);
-        }
-.footer {
-      background-color: #f5f5f5;
-    padding: 50px 20px 20px;
-}
-
-.footer-container {
-      display: flex;
-      justify-content: space-between;
-    }
-
-.footer-section {
-      margin-bottom: 20px;
-  /*margin-right: auto;*/
- /* width: auto;*/
-    }
-
-#s1{
-        width: 20%;
-    }
-
-#s2{
-        width: 10%;
-    }
-#s3{
-        width: 45%;
-    }
-#s4{
-        width: 10%;
-    }
-#s5{
-        width: 15%;
-    }
-
-.footer-section h3 {
-  margin-bottom: 10px;
-  font-weight: bold;
-    }
-
-.footer-section ul {
-  list-style: none;
-  padding: 0;
-    }
-
-.footer-section ul li {
-  margin-bottom: 5px;
-    }
-
-.footer-section ul li a {
-  color: #333;
-  text-decoration: none;
-    }
-
-.footer-section ul li a:hover {
-  color: blue;
-    }
-
-.footer-copyright {
-  text-align: center;
-  margin-top: 20px;
-    }
-
-.footer-copyright p {
-  margin-bottom: 0;
-    }
-.main-header {
-    /*margin-top: 100px; /* Add your desired space */
-    position: relative;
-    height: 70vh; /* 50% of the viewport height */
-    overflow: hidden;
-    color: #fff; /* Text color for header content */
-}
-
-.header-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('../static/Images/header.jpg');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.8;
-    z-index: -1;
-}
-
-.header-content {
-    position: relative;
-    z-index: 1;
-    padding: 20px;
-}
-.search-bar {
-    position: absolute;
-    bottom: 0; /* Adjust distance from the bottom */
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    padding: 20px;
-    width: 100%;
-}
-
-.search-bar form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.search-bar input[type="text"] {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.search-bar button {
-    padding: 10px 20px;
-    margin-left: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff; /* Change button color as needed */
-    color: #fff;
-    cursor: pointer;
-}
-.products-container h2{
-    text-align: center;
-}
-#countdown {
-            font-size: 24px;
-            font-weight: bold;
-            /*text-align: center;*/
-        }
-</style>
-
-</head>
-<body>
-<header>
-  <a href="#" class="brand">Karibu Kilifi</a>
-
-  <div class="menu-btn">  </div>
-
-  <div class="navigation">
-
-    <div class="navigation-items">
-      <a href="#">Home</a>
-      <a href="#">About</a>
-      <a href="#">Explore</a>
-      <a href="#">Gallery</a>
-      <a href="#">Contact Us</a>
-    </div>
-  </div>
-</header>
-<br><br><br>
+{% block content %}
 
 <div class="main-header">
 
 <div class="header-background"></div>
     <div class="header-content">
-        <!-- Your header content goes here -->
-        <h1>Your Website Name</h1>
+        <h1>Karibu Kilifi</h1>
         <!-- Navigation links -->
-        <div class="search-bar">
-            <form action="/search/" method="GET">
-                <input type="text" name="search_query" placeholder="Search...">
-                <button type="submit">Search</button>
-            </form>
-        </div>
     </div>
 </div>
 
-<div class="section-2">
-    <h2>About Kilifi County</h2>
-    <br>
-      <p class="about_text">Kilifi County, nestled along Kenya's picturesque coastline,
-          is a captivating region renowned for its stunning landscapes, rich cultural heritage,
-          and vibrant communities. With its expansive shoreline stretching along the Indian Ocean,
-          Kilifi boasts pristine beaches adorned with palm trees swaying gently in the ocean breeze,
-          offering visitors a serene escape and a plethora of water-based activities.
-          The county's diverse terrain includes lush forests, mangrove swamps, and the iconic Kilifi Creek,
-          providing a haven for biodiversity and wildlife. Home to the Giriama, Chonyi,
-          and other ethnic groups, Kilifi County treasures a tapestry of traditions, music, and art,
-          creating a unique mosaic of cultural experiences. The region's bustling markets, where local artisans
-          showcase their crafts, and the historical ruins like the Gede Ruins, narrate tales of ancient civilizations,
-          adding depth to Kilifi's allure. This coastal gem pulsates with warmth, inviting travelers to explore its natural
-          wonders and immerse themselves in its vibrant local life.
-      </p>
-    <p class="text1">You don't want to check places off your bucketlist - You want to be moved by the beauty and adventure</p>
-    <p class="text2">If it's your first time traveling to the Coast, you're exactly where you need to be. Browse our site for endless destination inspirations and travel-tips</p>
-    </div>
 
 <div class="products-container">
-<h2>Limited Time Offers | <div id="countdown"></div> </h2>
-
+<h2>Holiday Offer <div id="countdown"></div> </h2>
+<h3>Choose from our carefully curated Travel Packages</h3>
     <div class="product-cards">
         {% for package in travel_packages %}
             <div class="product-card">
 
                 <img src="{{ package.attraction.image.url }}" alt="{{ package.attraction.name }}">
 
-                    <h1>{{ package.package_name }}</h1>
+                    <h2>{{ package.package_name }}</h2>
                     <p>{{ package.package_description }}</p>
                     <p><del>Was: Kshs.{{ package.was }}</del></p>
                     <p>Now: Kshs.{{ package.package_price }}</p>
 
-                        <a href="#" >Check out now</a>
+                        <a href="{% url 'PackageReservation' %}" >Check out now</a>
 
             </div>
         {% endfor %}
@@ -408,53 +55,50 @@ color: #007bff;
     </div>
 </div>
 
-<footer class="footer">
-    <div class="footer-container">
-      <div class="footer-section" id="s1">
-        <h3>Newsletter</h3>
-        <form action="#">
-            <p>By subscribing, you agree to our Terms and Conditions</p>
-          <input type="email" placeholder="Enter your email" required>
-          <button type="submit">Subscribe</button>
-        </form>
-      </div>
-
-      <div class="footer-section" id="s2">
-        <h3>Social Media</h3>
-        <ul class="social-media">
-          <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-          <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-        </ul>
-      </div>
-
-      <div class="footer-section" id="s3">
-        <h3>About Us</h3>
-        <p>Karibu Kilifi is your ultimate travel guide, offering information about destinations, accommodations, and activities in Kilifi County.</p>
-      </div>
-
-      <div class="footer-section" id="s4">
-        <h3>Explore</h3>
-        <ul>
-          <li><a href="#">Destinations</a></li>
-          <li><a href="#">Activities</a></li>
-          <li><a href="#">Attractions</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-section" id="s5">
-        <h3>Contact Us</h3>
-        <p>Email: info@karibukilifi.com</p>
-        <p>Phone: +123456789</p>
-        </ul>
-      </div>
+<div class="section-2">
+    <h2>About Kilifi County</h2>
+    <br>
+      <p class="about_text">Kilifi County, nestled along Kenya's picturesque coastline,
+          is a captivating region renowned for its stunning landscapes, rich cultural heritage,
+          and vibrant communities. With its expansive shoreline stretching along the Indian Ocean,
+          Kilifi boasts pristine beaches adorned with palm trees swaying gently in the ocean breeze,
+          offering visitors a serene escape and a plethora of water-based activities.
+          The county's diverse terrain includes lush forests, mangrove swamps, and the iconic Kilifi Creek,
+          providing a haven for biodiversity and wildlife. Home to the Giriama, Chonyi,
+          and other ethnic groups, Kilifi County treasures a tapestry of traditions, music, and art,
+          creating a unique mosaic of cultural experiences. The region's bustling markets, where local artisans
+          showcase their crafts, and the historical ruins like the Gede Ruins, narrate tales of ancient civilizations,
+          adding depth to Kilifi's allure. This coastal gem pulsates with warmth, inviting travelers to explore its natural
+          wonders and immerse themselves in its vibrant local life.
+      </p>
+    <p class="text1">You don't want to check places off your bucketlist - You want to be moved by the beauty and adventure</p>
+    <p class="text2">If it's your first time traveling to the Coast, you're exactly where you need to be. Browse our site for endless destination inspirations and travel-tips</p>
     </div>
 
-    <div class="footer-copyright">
-      <p>&copy; 2023 Karibu Kilifi. All Rights Reserved.</p>
-        <a href="#">Terms of Service | Privacy Policy</a>
-    </div>
-  </footer>
+<div class="slideshow-container">
+<h2>Testimonials</h2>
+<div class="mySlides">
+  <p class="author">- John Muturi</p>
+  <q>The customer service is very friendly. Anyone planning to take a vacation this holiday, this is the right place to do all your planning.</q>
+</div>
+
+<div class="mySlides">
+  <p class="author">- Ernest Wafula</p>
+  <q>I might think of relocating to Kilifi soon. Beautiful place</q>
+</div>
+
+<div class="mySlides">
+  <p class="author">- Yvonne Njeri</p>
+  <q>The people are very welcoming. Don't leave without taking a stroll down the beach</q>
+</div>
+
+<a class="prev" onclick="plusSlides(-1)">❮</a>
+<a class="next" onclick="plusSlides(1)">❯</a>
+
+</div>
+
+    {% include 'footer.html' %}
+
 <script>
         // Set the date for the countdown (change this date to your desired target date)
         const targetDate = new Date('December 31, 2023 00:00:00').getTime();
@@ -481,6 +125,36 @@ color: #007bff;
                 document.getElementById('countdown').innerHTML = 'Countdown is over!';
             }
         }, 1000); // Update every second
+
+
+        /*Slides container*/
+        var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
     </script>
-</body>
-</html>
+
+
+{% endblock %}

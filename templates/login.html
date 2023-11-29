@@ -1,16 +1,134 @@
-{% extends 'Websites/index.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    @import url('https://fonts.googleapis.com/ss2?family=Poppins:wght@400;600&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+body{
+  background: #f1f1f1f1;
+}
+.wrapper{
+  width: 330px;
+  padding: 2rem 0 1rem 0;
+  margin: 50px auto;
+  background: #fff;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+h1{
+  font-size: 2rem;
+  color: #07001f;
+}
+p{
+  margin-bottom: 0.5rem;
+}
+form input{
+  width: 85%;
+  outline: none;
+  border: none;
+  background: #007bff;
+    color: white;
+  padding: 12px 14px;
+  margin-bottom: 0;
+  border-radius: 10px;
+}
+.recover{
+  text-align: right;
+  font-size: 0.8rem;
+  margin-right: 10px;
+}
+.recover a{
+  text-decoration: none;
+  color: #07001f;
+}
+button{
+  font-size: 1.1rem;
+  margin-top: 0;
+  padding: 0;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  width: 85%;
+  background: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+button:hover{
+  background: rgba(122,30,30,0.767);
+}
+.or{
+  font-size: 0.8rem;
+  margin-top: 1.5rem;
+}
+.icons i{
+  color: #07001f;
+  padding: 00.8rem 1.5rem;
+  border-radius: 10px;
+  margin-left: .9rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border: 2px solid #dfe9f5;
+}
+.icons i:hover{
+  color: #fff;
+  background: #07001f;
+  transition: 1s;
+}
+.icons i:first-child{
+  color: green;
+}
+.icons i:last-child{
+  color: blue;
+}
+.not-member{
+  font-size: 0.8rem;
+  margin-top: 1.4rem;
+}
+.not-member a{
+  color: blue;
+  text-decoration: none;
+}
+a:hover{
+  text-decoration: underline;
+}
+.heading h2{
+    text-align: center;
+    margin-top: 20px;
+}
+form li{
+    color: red;
+}
+</style>
+</head>
 
-{% block title %}
-    <title>Login Form</title>
-{% endblock %}
 
-{% block content %}
-    <h2>Login</h2>
+
+<body>
+<div class="heading">
+    <h2>To continue, please log in</h2>
+    </div>
      <div class="wrapper">
+          <h1>Hello,</h1>
+  <p>Welcome back! We have missed you :)</p>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
+        <p class="recover">
+      <a href="{% url 'password_reset' %}">Recover Password</a>
+    </p>
         <input type="Submit" value="SUBMIT">
     </form>
+         <div class = "not-member">
+      Not a member? <a href="{% url 'signup' %}">Register Now</a>
     </div>
-{% endblock %}
+    </div>
+</body>

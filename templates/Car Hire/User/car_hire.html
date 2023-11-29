@@ -3,97 +3,139 @@
 {% block title %}
     <title>Car Hire</title>
     <style>
-    .main-header {
-    /*margin-top: 100px; /* Add your desired space */
-    position: relative;
-    height: 70vh; /* 50% of the viewport height */
-    overflow: hidden;
-    color: #fff; /* Text color for header content */
+/*Paragraph*/
+.container    body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
 }
 
-.header-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('../static/Images/header.jpg');
-    background-size: cover;
-    background-position: center;
-    z-index: -1;
+.container {
+  width: 90%;
+  margin: 20px auto;
+  background-color: #f1f1f1f1;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.header-content {
-    position: relative;
-    z-index: 1;
-    padding: 20px;
+.container h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
 }
-.search-bar {
-    position: absolute;
-    /*bottom: 20px; /* Adjust distance from the bottom */
-    left: 50%;
-    transform: translateX(-50%);
+
+.container h2 {
+  color: #333;
+    margin-bottom: 20px;
+}
+
+.container .intro {
+  font-size: 18px;
+  color: #666;
+    margin-bottom: 20px;
     text-align: center;
 }
 
-.search-bar form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.container ul {
+  list-style-type: circle;
+  padding: 10px;
+    margin-bottom: 10px;
 }
 
-.search-bar input[type="text"] {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.container li {
+  margin-bottom: 10px;
+    text-align: left;
 }
+.container span{
+    font-weight: bold;
+}
+.container .contact {
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+}
+.container .outro{
+    text-align: center;
+    margin-bottom: 10px;
+}
+.container .browse{
+    margin-top: 20px;
+    text-align: center;
+    font-style: italic;
+    font-weight: bolder;
+}
+.container a {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #fff; /* Text color */
+      background-color: #333; /* Background color */
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
 
-.search-bar button {
-    padding: 10px 20px;
-    margin-left: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff; /* Change button color as needed */
-    color: #fff;
-    cursor: pointer;
-}
+    /* Hover effect for the anchor element */
+.container    a:hover {
+      background-color: #555; /* Hover background color */
+    }
+
+    /* Adjustments for responsive design (optional) */
+    @media screen and (max-width: 768px) {
+    .container  a {
+        display: block;
+        width: 100%;
+        margin-top: 15px;
+      }
+    }
 
     </style>
 {% endblock %}
 
 {% block content %}
-<div class="main-header">
 
-<div class="header-background"></div>
-    <div class="header-content">
-        <!-- Your header content goes here -->
-        <h1>BEST WORLDWIDE <br>
-        CAR HIRE DEALS</h1>
-        <h2>Browse Through our range of cars and find your best fit.</h2>
-        <!-- Navigation links -->
-        <div class="search-bar">
-            <form action="/search/" method="get">
-                <input type="text" name="search_query" placeholder="Search...">
-                <button type="submit">Search</button>
-            </form>
-        </div>
-    </div>
-</div>
+
+  <div class="container">
+    <h1>Welcome to King Kong Car Hire!</h1>
+    <p class="intro">At King Kong Car Hire, we're dedicated to providing you with a seamless and enjoyable car rental experience. Whether you're traveling for business or pleasure, our diverse fleet of vehicles is meticulously maintained and equipped to meet your needs.</p>
+
+    <h2>Why Choose Us?</h2>
+    <ul>
+      <li><span>Wide Range of Vehicles:</span> From compact cars to spacious SUVs and luxury sedans, we offer a broad selection of vehicles to suit every occasion and preference.</li>
+      <li><span>Convenient Booking:</span> Our user-friendly online booking system allows you to easily reserve the vehicle of your choice in just a few clicks. You can also reach out to our friendly customer service team for assistance.</li>
+      <li><span>Transparent Pricing:</span> We believe in transparent pricing with no hidden fees. Our competitive rates and flexible rental options ensure you get the best value for your money.</li>
+      <li><span>Quality Service:</span> Your satisfaction is our priority. Our dedicated staff strives to deliver exceptional customer service at every step of your car rental journey.</li>
+      <li><span>Flexible Pickup and Drop-off:</span> We offer flexible pickup and drop-off locations, making it convenient for you to collect and return your vehicle.</li>
+      <li><span>Additional Services:</span> Enhance your experience with optional add-ons like GPS navigation systems, child seats, and more.</li>
+    </ul>
+
+    <p class="outro">Whether you need a vehicle for a short trip or an extended road adventure, trust King Kong Car Hire to provide you with reliable, comfortable, and affordable transportation solutions.</p>
+
+    <p class="contact">Contact us today to book your next car rental and embark on a memorable journey with peace of mind!</p>
+  <p class="browse">Browse through our collection of wheels, choose what suits your needs, pick and have yourself a wonderful journey ...</p>
+  </div>
+
 
 <div class="product-cards">
-    {% for cars in hire %}
-        <div class="product-card">
-            <img src=" {{ cars.image.url }}" alt="{{ cars.make }} {{ cars.model }}">
-            <div class="product-info">
-                <h2>{{ cars.make }} {{ cars.model }}</h2>
-                <p>{{ cars.description}}</p>
-                <p class="price">Price: {{ cars.price }} <br>
-                    Seaters: {{ cars.seater }}</p>
-                <a href="#" >Check out now</a>
+
+        {% for car in hire %}
+            <!-- Display all cars initially if no search results -->
+            <div class="product-card">
+                <img src="{{ car.image.url }}" alt="{{ car.make }} {{ car.model }}">
+                <div class="product-info">
+                    <h2>{{ car.make }} {{ car.model }}</h2>
+                    <p>{{ car.description }}</p>
+                    <p class="price">Price: {{ car.price }} <br>
+                        Seaters: {{ car.seater }}</p>
+                    <a href="{% url 'CarCheckOut' %}">Check out now</a>
+                </div>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+
 </div>
-      {% include 'footer.html' %}
+
+    {% include 'footer.html' %}
 
 {% endblock %}
