@@ -10,15 +10,15 @@
 
 <div class="header-background"></div>
     <div class="header-content">
-        <h1>Karibu Kilifi</h1>
+        <h1>KARIBU KILIFI</h1>
         <!-- Navigation links -->
     </div>
 </div>
 
 
 <div class="products-container">
-<h2>Holiday Offer <div id="countdown"></div> </h2>
-<h3>Choose from our carefully curated Travel Packages</h3>
+<h2 class="offer">Holiday Offer <div id="countdown"></div> </h2>
+<h3 class="choose">Choose from our carefully curated Travel Packages</h3>
     <div class="product-cards">
         {% for package in travel_packages %}
             <div class="product-card">
@@ -41,22 +41,23 @@
     <div class="category-images">
         <h2>Categories</h2>
         <a href="{% url 'Destination' %}">
-        <img src="../static/Images/forest.jpg" alt="">
+        <img src="../../static/Images/forest.jpg" alt="">
         </a>
         <a href="{% url 'Accommodation' %}">
-        <img src="../static/Images/atrium.jpg" alt="">
+        <img src="../../static/Images/atrium.jpg" alt="">
         </a>
         <a href="{% url 'CarHire' %}">
-        <img src="../static/Images/cars1.jpg" alt="">
+        <img src="../../static/Images/cars1.jpg" alt="">
         </a>
         <a href="{% url 'Attraction' %}">
-        <img src="../static/Images/destination.jpeg" alt="">
+        <img src="../../static/Images/destination.jpeg" alt="">
         </a>
     </div>
 </div>
 
 <div class="section-2">
-    <h2>About Kilifi County</h2>
+<div id="aboout">
+    <h2 >About Kilifi County</h2>
     <br>
       <p class="about_text">Kilifi County, nestled along Kenya's picturesque coastline,
           is a captivating region renowned for its stunning landscapes, rich cultural heritage,
@@ -74,7 +75,7 @@
     <p class="text1">You don't want to check places off your bucketlist - You want to be moved by the beauty and adventure</p>
     <p class="text2">If it's your first time traveling to the Coast, you're exactly where you need to be. Browse our site for endless destination inspirations and travel-tips</p>
     </div>
-
+</div>
 <div class="slideshow-container">
 <h2>Testimonials</h2>
 <div class="mySlides">

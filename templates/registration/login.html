@@ -122,6 +122,7 @@ form li{
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
+
         <p class="recover">
       <a href="{% url 'password_reset' %}">Recover Password</a>
     </p>

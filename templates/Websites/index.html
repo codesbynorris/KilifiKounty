@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'main.css' %}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="{% static 'smoothScroll.js' %}"></script>
 
     {% block title %}
     <title>Index</title>
@@ -22,11 +23,26 @@
 
     <div class="navigation-items">
       <a href="#">Home</a>
-      <a href="#">About</a>
+      <a href="home2.html">About</a>
       <a href="#">Explore</a>
-      <a href="#">Gallery</a>
+      <a href="#"></a>
       <a href="#">Contact Us</a>
+        {% if username %}
+            <div class="dropdown">
+                <button class="dropbtn">You are logged in as: {{ username }}</button>
+                <div class="dropdown-content">
+                    <a href="{% url 'logout' %}">Logout</a>
+                </div>
+            </div>
+        {% else %}
+            <a href="{% url 'login' %}">You are not logged in.</a>
+        {% endif %}
     </div>
+  {% if username %}
+    <div class="user-info">
+        <p>Welcome, {{ username }}</p>
+    </div>
+{% endif %}
   </div>
 </header>
 

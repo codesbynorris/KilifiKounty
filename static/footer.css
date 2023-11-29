@@ -7,6 +7,15 @@
     box-shadow: 0px 0px 20px 0 rgba(0, 0, 0, 0.2);
 
 }
+.brand{
+      color: #0077A2;
+      font-size: 1.8em;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-decoration: none;
+      margin-left: 20px;
+
+    }
 
 .footer-container {
       display: flex;

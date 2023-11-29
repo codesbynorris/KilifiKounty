@@ -78,7 +78,7 @@ urlpatterns = [
                   # path('home2/', homepage, name='homepage'),
                   # Broken Links
                   path('car/<int:id>', cars),
-                  path('test/', travel_packages, name='homepage'),
+                  path('test/', travel_packages, name='home'),
                   path('packagereservation/', Package_Reservation, name='PackageReservation'),
 
                   # path('search/', search_cars, name='search'),

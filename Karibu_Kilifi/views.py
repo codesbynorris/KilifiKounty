@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
@@ -7,7 +8,6 @@ from django.forms import ModelForm
 from django.http import HttpResponseRedirect, HttpResponse
 from django_daraja.mpesa.core import MpesaClient
 
-
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout, user_logged_in
 from django.shortcuts import render, redirect, get_object_or_404
@@ -15,7 +15,7 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_protect
 
 from Karibu_Kilifi.models import carHire, destination, accommodation, attraction, Guide, TravelPackages, LoginForm, \
-    SignupForm, Notification, SubscriptionForm, Subscriber
+    SignupForm, Notification
 
 
 # Create your views here.
@@ -118,7 +118,7 @@ def SampleHome(request):
 
 
 def homepage(request):
-    return render(request, 'home2.html')
+    return render(request, 'Websites/home2.html')
 
 
 def accommodations(request, id):
@@ -213,16 +213,13 @@ def signup_view(request):
             is_admin = form.cleaned_data['is_admin']
 
             if User.objects.filter(username=username).exists():
-                # Handle case when the username is already taken
                 error_message = 'Username already exists. Please choose a different username.'
                 return render(request, 'signup.html', {'form': form, 'error_message': error_message})
 
-            # Create a new user account
             user = User.objects.create_user(username=username, password=password)
 
-            # Set user as admin based on checkbox value
             if is_admin:
-                user.is_staff = False
+                user.is_staff = True
                 user.is_superuser = True
                 user.save()
             return redirect('login')
@@ -241,24 +238,24 @@ def login_view(request):
             is_admin = form.cleaned_data['is_admin']
             user = authenticate(username=username, password=password)
 
-            if user:
+            if user is not None:
                 login(request, user)
-                if is_admin:
-                    return redirect('admin')
+                if is_admin and user.is_staff:
+                    return redirect('admin')  # Redirect to admin page
                 else:
-                    return redirect('homepage')
+                    return redirect('normal')  # Redirect to homepage for non-admin users or regular login
+
             else:
-                form.add_error(None, "Invalid username or password.")  # Add form-level error
+                form.add_error(None, "Invalid username or password.")  # Add form-level error for authentication failure
 
     else:
         form = LoginForm()
 
-    return render(request, 'login.html', {'form': form})
-
+    return render(request, 'registration/login.html', {'form': form})
 
 def travel_packages(request):
     travel_packages = TravelPackages.objects.all()
-    return render(request, 'home2.html', {'travel_packages': travel_packages})
+    return render(request, 'Websites/home2.html', {'travel_packages': travel_packages})
 
 
 def login_status(request):
@@ -394,3 +391,16 @@ def stk_push_callback(request):
     data = request.body
 
     return HttpResponse("STK Push in Django👋")
+
+
+def loggingin_view(request):
+    # Your login logic
+    # If login is successful, redirect to the 'index' view
+    return redirect('home')
+
+
+@login_required
+def index(request):
+    # Assuming the user is logged in, you can access the username like this:
+    username = request.user.username
+    return render(request, 'Websites/index.html', {'username': username})
